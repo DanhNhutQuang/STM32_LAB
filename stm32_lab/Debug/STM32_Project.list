@@ -1110,7 +1110,7 @@ static void MX_GPIO_Init(void)
  8000834:	40010c00 	.word	0x40010c00
 
 08000838 <HAL_TIM_PeriodElapsedCallback>:
-const unsigned int SCALE = 200;
+const unsigned int SCALE = 100;
 int counter = SCALE;
 unsigned int index_led = 0;
 
@@ -1128,7 +1128,7 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 	if (counter == SCALE) {
  8000848:	4b2b      	ldr	r3, [pc, #172]	; (80008f8 <HAL_TIM_PeriodElapsedCallback+0xc0>)
  800084a:	681b      	ldr	r3, [r3, #0]
- 800084c:	22c8      	movs	r2, #200	; 0xc8
+ 800084c:	2264      	movs	r2, #100	; 0x64
  800084e:	4293      	cmp	r3, r2
  8000850:	d108      	bne.n	8000864 <HAL_TIM_PeriodElapsedCallback+0x2c>
 		update7SEG(index_led++);
@@ -1141,7 +1141,7 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
  800085e:	f7ff fe4b 	bl	80004f8 <update7SEG>
  8000862:	e02f      	b.n	80008c4 <HAL_TIM_PeriodElapsedCallback+0x8c>
 	} else if(counter == (SCALE*3/4)) {
- 8000864:	22c8      	movs	r2, #200	; 0xc8
+ 8000864:	2264      	movs	r2, #100	; 0x64
  8000866:	4613      	mov	r3, r2
  8000868:	005b      	lsls	r3, r3, #1
  800086a:	4413      	add	r3, r2
@@ -1160,7 +1160,7 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
  8000882:	f7ff fe39 	bl	80004f8 <update7SEG>
  8000886:	e01d      	b.n	80008c4 <HAL_TIM_PeriodElapsedCallback+0x8c>
 	} else if (counter == (SCALE*2/4)) {
- 8000888:	23c8      	movs	r3, #200	; 0xc8
+ 8000888:	2364      	movs	r3, #100	; 0x64
  800088a:	005b      	lsls	r3, r3, #1
  800088c:	089b      	lsrs	r3, r3, #2
  800088e:	4a1a      	ldr	r2, [pc, #104]	; (80008f8 <HAL_TIM_PeriodElapsedCallback+0xc0>)
@@ -1177,7 +1177,7 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
  80008a2:	f7ff fe29 	bl	80004f8 <update7SEG>
  80008a6:	e00d      	b.n	80008c4 <HAL_TIM_PeriodElapsedCallback+0x8c>
 	} else if (counter == (SCALE*1/4)) {
- 80008a8:	23c8      	movs	r3, #200	; 0xc8
+ 80008a8:	2364      	movs	r3, #100	; 0x64
  80008aa:	089b      	lsrs	r3, r3, #2
  80008ac:	4a12      	ldr	r2, [pc, #72]	; (80008f8 <HAL_TIM_PeriodElapsedCallback+0xc0>)
  80008ae:	6812      	ldr	r2, [r2, #0]
@@ -1212,7 +1212,7 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
  80008de:	681b      	ldr	r3, [r3, #0]
  80008e0:	3b01      	subs	r3, #1
  80008e2:	e000      	b.n	80008e6 <HAL_TIM_PeriodElapsedCallback+0xae>
- 80008e4:	23c8      	movs	r3, #200	; 0xc8
+ 80008e4:	2364      	movs	r3, #100	; 0x64
  80008e6:	4a04      	ldr	r2, [pc, #16]	; (80008f8 <HAL_TIM_PeriodElapsedCallback+0xc0>)
  80008e8:	6013      	str	r3, [r2, #0]
 }

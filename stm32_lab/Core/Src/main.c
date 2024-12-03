@@ -387,7 +387,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-const unsigned int SCALE = 200;
+const unsigned int SCALE = 100;
 int counter = SCALE;
 unsigned int index_led = 0;
 
