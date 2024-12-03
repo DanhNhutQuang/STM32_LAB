@@ -62,10 +62,10 @@ void Error_Handler(void);
 #define Led_Test_All_GPIO_Port GPIOA
 #define Led_Test_Timer_Pin GPIO_PIN_2
 #define Led_Test_Timer_GPIO_Port GPIOA
-#define Dot_Pin GPIO_PIN_3
-#define Dot_GPIO_Port GPIOA
-#define Led_5_Pin GPIO_PIN_4
+#define Led_5_Pin GPIO_PIN_3
 #define Led_5_GPIO_Port GPIOA
+#define Dot_Pin GPIO_PIN_4
+#define Dot_GPIO_Port GPIOA
 #define EN_0_Pin GPIO_PIN_6
 #define EN_0_GPIO_Port GPIOA
 #define EN_1_Pin GPIO_PIN_7

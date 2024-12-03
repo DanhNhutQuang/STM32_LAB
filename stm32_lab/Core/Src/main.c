@@ -210,6 +210,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_GPIO_WritePin(Dot_GPIO_Port, Dot_Pin, GPIO_PIN_RESET);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -314,16 +315,16 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, Led_Test_All_Pin|Led_Test_Timer_Pin|Dot_Pin|Led_5_Pin
+  HAL_GPIO_WritePin(GPIOA, Led_Test_All_Pin|Led_Test_Timer_Pin|Led_5_Pin|Dot_Pin
                           |EN_0_Pin|EN_1_Pin|EN_2_Pin|EN_3_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, SEG0_Pin|SEG1_Pin|SEG2_Pin|SEG3_Pin
                           |SEG4_Pin|SEG5_Pin|SEG6_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : Led_Test_All_Pin Led_Test_Timer_Pin Dot_Pin Led_5_Pin
+  /*Configure GPIO pins : Led_Test_All_Pin Led_Test_Timer_Pin Led_5_Pin Dot_Pin
                            EN_0_Pin EN_1_Pin EN_2_Pin EN_3_Pin */
-  GPIO_InitStruct.Pin = Led_Test_All_Pin|Led_Test_Timer_Pin|Dot_Pin|Led_5_Pin
+  GPIO_InitStruct.Pin = Led_Test_All_Pin|Led_Test_Timer_Pin|Led_5_Pin|Dot_Pin
                           |EN_0_Pin|EN_1_Pin|EN_2_Pin|EN_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
@@ -342,19 +343,32 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int counter = 100;
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
-HAL_GPIO_TogglePin(Led_Test_Timer_GPIO_Port, Led_Test_Timer_Pin);
-if (counter == 100) {
-		display7SEG(1);
-		HAL_GPIO_WritePin(EN_0_GPIO_Port, EN_0_Pin, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(EN_1_GPIO_Port, EN_1_Pin, GPIO_PIN_SET);
-	} else if(counter == 50) {
-		display7SEG(2);
-		HAL_GPIO_WritePin(EN_0_GPIO_Port, EN_0_Pin, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(EN_1_GPIO_Port, EN_1_Pin, GPIO_PIN_RESET);
+const unsigned int SCALE = 200;
+int counter = SCALE;
+
+void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
+{
+
+	HAL_GPIO_TogglePin(Led_Test_Timer_GPIO_Port, Led_Test_Timer_Pin);
+
+	if (counter == SCALE) {
+	    display7SEG(1);
+	    HAL_GPIO_WritePin(EN_3_GPIO_Port, EN_3_Pin, GPIO_PIN_SET);
+	    HAL_GPIO_WritePin(EN_0_GPIO_Port, EN_0_Pin, GPIO_PIN_RESET);
+	} else if(counter == (SCALE*3/4)) {
+	    display7SEG(2);
+	    HAL_GPIO_WritePin(EN_0_GPIO_Port, EN_0_Pin, GPIO_PIN_SET);
+	    HAL_GPIO_WritePin(EN_1_GPIO_Port, EN_1_Pin, GPIO_PIN_RESET);
+	} else if (counter == (SCALE*2/4)) {
+	    display7SEG(3);
+	    HAL_GPIO_WritePin(EN_1_GPIO_Port, EN_1_Pin, GPIO_PIN_SET);
+	    HAL_GPIO_WritePin(EN_2_GPIO_Port, EN_2_Pin, GPIO_PIN_RESET);
+	} else if (counter == (SCALE*1/4)) {
+	    display7SEG(0);
+	    HAL_GPIO_WritePin(EN_2_GPIO_Port, EN_2_Pin, GPIO_PIN_SET);
+	    HAL_GPIO_WritePin(EN_3_GPIO_Port, EN_3_Pin, GPIO_PIN_RESET);
 	}
-	counter = (counter > 0) ? counter-1 : 100;
+	counter = (counter > 0) ? counter-1 : SCALE;
 }
 /* USER CODE END 4 */
 
