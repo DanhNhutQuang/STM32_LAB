@@ -213,7 +213,12 @@ void update7SEG(int index) {
 			break;
 	}
 }
-
+void updateClockBuffer(int hour, int minute) {
+	led_buffer[0] = hour / 10;
+	led_buffer[1] = hour % 10;
+	led_buffer[2] = minute / 10;
+	led_buffer[3] = minute % 10;
+}
 /* USER CODE END 0 */
 
 /**
@@ -246,18 +251,32 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT (&htim2);
+
   initState();
+  HAL_TIM_Base_Start_IT (&htim2);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   HAL_GPIO_WritePin(Dot_GPIO_Port, Dot_Pin, GPIO_PIN_RESET);
+  int hour = 15, minute = 8, second = 50;
   while (1)
   {
 	  HAL_GPIO_TogglePin(Led_Test_All_GPIO_Port, Led_Test_All_Pin);
     /* USER CODE END WHILE */
-
+	  second++;
+	 	  	  if (second >= 60) {
+	 	  		  second = 0;
+	 	  		  minute++;
+	 	  	  }
+	 	  	  if( minute >= 60) {
+	 	  		  minute = 0;
+	 	  		  hour++;
+	 	  	  }
+	 	  	  if( hour >=24){
+	 	  		  hour = 0;
+	 	  	  }
+	 	  	  updateClockBuffer(hour, minute);
 
     /* USER CODE BEGIN 3 */
 	  HAL_Delay(1000);
@@ -395,6 +414,7 @@ void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef * htim )
 {
 	HAL_GPIO_TogglePin(Led_Test_Timer_GPIO_Port, Led_Test_Timer_Pin);
 
+	// Production
 	if (counter == SCALE) {
 		update7SEG(index_led++);
 	} else if(counter == (SCALE*3/4)) {
