@@ -314,7 +314,6 @@ int main(void)
 	  		  setTimer0(duration); // Chu y: while(1) tiep tuc chay sau dong nay
 	  	  }
 
-	  	  // 1/4s chay 1 lan
 	  	  if (timer1_flag == 1) {
 	  		  update7SEG(index_led++);
 	  		  if (!(index_led < MAX_LED)) index_led = 0;
