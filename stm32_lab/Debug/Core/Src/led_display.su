@@ -1,7 +1,9 @@
-led_display.c:12:13:display7SEG	16	static
-led_display.c:114:6:resetCountValue	4	static
-led_display.c:121:6:NormalMode	8	static
-led_display.c:207:12:get7SEG1Value	4	static
-led_display.c:222:12:get7SEG2Value	4	static
-led_display.c:239:6:LedDispMode	8	static
-led_display.c:287:6:LEDScanning	8	static
+led_display.c:12:6:clear7SEG	8	static
+led_display.c:23:13:display7SEG	16	static
+led_display.c:120:6:initState	8	static
+led_display.c:133:6:resetCountValue	4	static
+led_display.c:140:6:NormalMode	8	static
+led_display.c:226:12:get7SEG1Value	4	static
+led_display.c:241:12:get7SEG2Value	4	static
+led_display.c:258:6:LedDispMode	8	static
+led_display.c:306:6:LEDScanning	8	static

@@ -8,9 +8,9 @@
 #ifndef INC_GLOBAL_H_
 #define INC_GLOBAL_H_
 
-#define RED_INIT		30
-#define YELLOW_INIT		5
-#define GREEN_INIT		25
+#define RED_INIT		15
+#define YELLOW_INIT		4
+#define GREEN_INIT		12
 
 void LedTimeDurationInit();
 extern int mode;

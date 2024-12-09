@@ -9,6 +9,17 @@
 
 enum LEDState {RED, YELLOW, GREEN};
 
+void clear7SEG() {
+	HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(SEG5_GPIO_Port, SEG5_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(SEG4_GPIO_Port, SEG4_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(SEG3_GPIO_Port, SEG3_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(SEG6_GPIO_Port, SEG6_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(SEG1_GPIO_Port, SEG1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(SEG2_GPIO_Port, SEG2_Pin, GPIO_PIN_SET);
+}
+
+
 static void display7SEG(int num) {
 	  switch (num) {
 		case 0:
@@ -104,6 +115,14 @@ static void display7SEG(int num) {
 		  default:
 			  break;
 	}
+}
+
+void initState() {
+	display7SEG(8);
+	HAL_Delay(1000);
+	clear7SEG();
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_All, GPIO_PIN_SET);
+	HAL_Delay(1000);
 }
 
 int count1 = RED_INIT;
