@@ -72,13 +72,11 @@ void Error_Handler(void);
 #define LED_RED_GPIO_Port GPIOA
 #define SEG0_Pin GPIO_PIN_7
 #define SEG0_GPIO_Port GPIOA
-#define Red_1_Pin GPIO_PIN_0
-#define Red_1_GPIO_Port GPIOB
-#define Yel_1_Pin GPIO_PIN_1
-#define Yel_1_GPIO_Port GPIOB
-#define Gre_1_Pin GPIO_PIN_2
-#define Gre_1_GPIO_Port GPIOB
-#define BUTTON_3_Pin GPIO_PIN_10
+#define BUTTON_1_Pin GPIO_PIN_0
+#define BUTTON_1_GPIO_Port GPIOB
+#define BUTTON_2_Pin GPIO_PIN_1
+#define BUTTON_2_GPIO_Port GPIOB
+#define BUTTON_3_Pin GPIO_PIN_2
 #define BUTTON_3_GPIO_Port GPIOB
 #define SEG1_Pin GPIO_PIN_8
 #define SEG1_GPIO_Port GPIOA
@@ -98,10 +96,12 @@ void Error_Handler(void);
 #define Yel_2_GPIO_Port GPIOB
 #define Gre_2_Pin GPIO_PIN_5
 #define Gre_2_GPIO_Port GPIOB
-#define BUTTON_1_Pin GPIO_PIN_8
-#define BUTTON_1_GPIO_Port GPIOB
-#define BUTTON_2_Pin GPIO_PIN_9
-#define BUTTON_2_GPIO_Port GPIOB
+#define Red_1_Pin GPIO_PIN_6
+#define Red_1_GPIO_Port GPIOB
+#define Yel_1_Pin GPIO_PIN_7
+#define Yel_1_GPIO_Port GPIOB
+#define Gre_1_Pin GPIO_PIN_8
+#define Gre_1_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

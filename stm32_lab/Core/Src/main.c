@@ -22,10 +22,11 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "input_reading.h"
-#include "timer.h"
+
 #include "input_processing.h"
 #include "led_display.h"
+#include "input_reading.h"
+#include "timer.h"
 
 /* USER CODE END Includes */
 
@@ -227,8 +228,8 @@ static void MX_GPIO_Init(void)
                           |SEG6_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, Red_1_Pin|Yel_1_Pin|Gre_1_Pin|Red_2_Pin
-                          |Yel_2_Pin|Gre_2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, Red_2_Pin|Yel_2_Pin|Gre_2_Pin|Red_1_Pin
+                          |Yel_1_Pin|Gre_1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : EN0_Pin EN1_Pin EN2_Pin EN3_Pin
                            MODE_Pin LED_RED_Pin SEG0_Pin SEG1_Pin
@@ -243,19 +244,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : Red_1_Pin Yel_1_Pin Gre_1_Pin Red_2_Pin
-                           Yel_2_Pin Gre_2_Pin */
-  GPIO_InitStruct.Pin = Red_1_Pin|Yel_1_Pin|Gre_1_Pin|Red_2_Pin
-                          |Yel_2_Pin|Gre_2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : BUTTON_3_Pin BUTTON_1_Pin BUTTON_2_Pin */
+  /*Configure GPIO pins : BUTTON_1_Pin BUTTON_2_Pin BUTTON_3_Pin */
   GPIO_InitStruct.Pin = BUTTON_1_Pin|BUTTON_2_Pin|BUTTON_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : Red_2_Pin Yel_2_Pin Gre_2_Pin Red_1_Pin
+                           Yel_1_Pin Gre_1_Pin */
+  GPIO_InitStruct.Pin = Red_2_Pin|Yel_2_Pin|Gre_2_Pin|Red_1_Pin
+                          |Yel_1_Pin|Gre_1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
